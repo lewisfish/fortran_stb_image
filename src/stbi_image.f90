@@ -65,7 +65,7 @@ module stb_image_mod
     end interface
 
     interface
-        ! STBIDEF stbi_uc *stbi_load(char const *filename, int *x, int *y,, int *channels_in_file, int desired_channels)
+        ! STBIDEF stbi_uc *stbi_load(char const *filename, int *x, int *y, int *channels_in_file, int desired_channels)
         function c_stbi_load(filename, x, y, n_channels, req_n_channels) bind(c, name="stbi_load")
             import :: c_char, c_int, c_ptr
             character(kind=c_char), intent(IN) :: filename(*)
