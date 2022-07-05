@@ -18,11 +18,11 @@ program test
 
     imgRGBA%image(10:50, 10:50) = RGBA(1, 1, 255, 255)
 
-    print*,imgRGB%save("test_new.png")
-    print*,imgRGBA%save("test_new_RGBA.png")
+    print*,imgRGB%save("data/test_new.png")
+    print*,imgRGBA%save("data/test_new_RGBA.png")
 
-    img2RGB = img2RGB%load("2.png")
-    img2RGBA = img2RGBA%load("2.png")
+    img2RGB = img2RGB%load("data/2.png")
+    img2RGBA = img2RGBA%load("data/2.png")
 
     print*,img2RGB%image(10, 10),img2RGBA%image(10, 10)
 

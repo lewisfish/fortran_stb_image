@@ -51,7 +51,7 @@ module stb_image_write_mod
             import :: c_char, c_int, c_ptr
             character(kind=c_char), intent(IN) :: filename(*)
             integer(c_int), value,  intent(IN) :: w, h, comp
-            type(c_ptr),    value              :: data
+            type(c_ptr),    value,  intent(IN) :: data
             integer(c_int) :: c_stbi_write_tga
         end function c_stbi_write_tga
     end interface

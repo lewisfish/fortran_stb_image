@@ -139,6 +139,7 @@ module stb_image_mod
 
         !currently don't support proper errors so check using stbi_info which does not decode image
         ! if err is 0 then problem reading image
+        ! not tue any more, can use stbi_failure_reason()
         err = stbi_info(t_filename, x, y, n_channels)
         if(err /= 1)then
             print*,"Image can not be read!"
@@ -153,6 +154,12 @@ module stb_image_mod
 
         !read data
         data_ptr = c_stbi_load(t_filename, x, y, n_channels, req_chan)
+        !check for errors
+        if(.not. c_associated(data_ptr))then
+            print*,stbi_failure_reason()
+            return
+        end if
+
         call c_f_pointer(data_ptr, char_array_pointer,[x*y*n_channels])
         allocate(data_tmp(x*y*n_channels))
         do i = 1, x*y*n_channels
