@@ -139,7 +139,7 @@ module stb_image_mod
 
         !currently don't support proper errors so check using stbi_info which does not decode image
         ! if err is 0 then problem reading image
-        ! not tue any more, can use stbi_failure_reason()
+        ! not true any more, can use stbi_failure_reason()
         err = stbi_info(t_filename, x, y, n_channels)
         if(err /= 1)then
             print*,"Image can not be read!"
