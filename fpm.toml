@@ -15,3 +15,8 @@ auto-executables = false
 name="main"
 source-dir="app"
 main="main.f90"
+
+[[ executable ]]
+name="test_image"
+source-dir="app"
+main="image_main.f90"

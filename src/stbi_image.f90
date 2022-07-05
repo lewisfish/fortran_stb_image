@@ -128,17 +128,14 @@ module stb_image_mod
         character(*),      intent(IN)  :: filename
         integer, allocatable           :: image(:, :, :)
 
-        character(kind=c_char,len=1), allocatable :: t_filename(:)
+        character(kind=c_char,len=:), allocatable     :: t_filename
         character(kind=c_char), dimension(:), pointer :: char_array_pointer => null()
         integer, allocatable :: data_tmp(:)
         type(c_ptr)                               :: data_ptr
         integer                                   :: req_chan, i, err
 
         !assign filename in proper fashion for c interop
-        allocate(t_filename(len(filename)))
-        do i = 1, len(filename)
-            t_filename(i) = filename(i:i)
-        end do
+        t_filename = filename//c_null_char
 
         !currently don't support proper errors so check using stbi_info which does not decode image
         ! if err is 0 then problem reading image

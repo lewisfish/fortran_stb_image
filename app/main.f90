@@ -68,16 +68,17 @@ program stb_image
             ir = int(255.99*r)
             ig = int(255.99*g)
             ib = int(255.99*b)
-            pixel(index) = char(ib)
+            pixel(index) = char(ir)
             index = index + 1
             pixel(index) = char(ig)
             index = index + 1
-            pixel(index) = char(ir)
+            pixel(index) = char(ib)
             index = index + 1
         end do
     end do
     img = c_loc(pixel)
     t_filename = C_char_"2.png"//C_NULL_CHAR
     index = c_stbi_write_png(t_filename, x, y, comp, img, 0_c_int)
-    print*,"Written png using ptr and custom image",1==index
+    print*,index
+
 end program stb_image

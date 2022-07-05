@@ -11,6 +11,7 @@ module stb_image_write_mod
     ! int stbi_write_force_png_filter;         // defaults to -1; set to 0..5 to force a filter mode
     integer(c_int), bind(c, name="stbi_write_force_png_filter") :: stbi_write_force_png_filter
 
+    !const void is a pointer, can convert const *int to const *void etc but not other way around
     interface
         ! int stbi_write_bmp(char const *filename, int w, int h, int comp, const void *data);
         function c_stbi_write_bmp(filename, w, h, comp, data) bind(c, name="stbi_write_bmp")
@@ -133,7 +134,6 @@ module stb_image_write_mod
             idx = index(filename, ".bmp")            
             if(idx > 0)then
                 write_image = c_stbi_write_bmp(t_filename, x, y, comp, img)
-
                 return
             end if
 
@@ -148,7 +148,6 @@ module stb_image_write_mod
                 write_image = c_stbi_write_hdr(t_filename, x, y, comp, img)
                 return
             end if
-
             print*,"No such file type!"
             write_image = 0
 
