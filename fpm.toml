@@ -11,12 +11,12 @@ source-dir="src"
 [build]
 auto-executables = false
 
-[[ executable ]]
-name="main"
-source-dir="app"
-main="main.f90"
+#[[ executable ]]
+#name="main"
+#source-dir="app"
+#main="main.f90"
 
-[[ executable ]]
-name="test_image"
-source-dir="app"
-main="image_main.f90"
+#[[ executable ]]
+#name="test_image"
+#source-dir="app"
+#main="image_main.f90"
