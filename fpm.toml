@@ -11,7 +11,7 @@ source-dir="src"
 [build]
 auto-executables = false
 
-[[ executable ]]
+[[executable]]
 name="main"
 source-dir="app"
 main="main.f90"
