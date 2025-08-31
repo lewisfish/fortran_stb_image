@@ -106,10 +106,10 @@ module stb_image_write_mod
             size_img = x * y * comp
 
             allocate(pixel(size_img))
-            !convert w x h x c into x*h*c array
+            !convert w x h x c into w*h*c array in row major order for C
             count = 1
-            do i = 1, x
-                do j = 1, y
+            do j = 1, y
+                do i = 1, x
                     do k = 1, comp
                         pixel(count:count) = char(data(i,j,k))
                         count = count + 1
